@@ -1,32 +1,57 @@
-﻿using Catalogue.Core.Dtos.Product;
+﻿namespace Catalogue.Core.Services;
 
-namespace Catalogue.Core.Services
+using Catalogue.Core.Dtos.Product;
+using Catalogue.Core.Entities;
+using Catalogue.Core.Interfeces;
+using Catalogue.Core.Services.Mappings;
+
+public class ProductService : IProductService
 {
-    public class ProductService : IProductService
+    private readonly IProductRepository _productRepository;
+
+    public ProductService(IProductRepository productRepository)
     {
-        public Task<int> CreateAsync(CreateProductDTO createProduct, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
+        _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
+    }
 
-        public Task<bool> DeleteAsync(int id, CancellationToken token = default)
-        {
-            throw new NotImplementedException();
-        }
+    public async Task<int> CreateAsync(CreateProductDTO createProduct, CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(createProduct);
 
-        public Task<IEnumerable<ReadOnlyProductDTO>?> GetAllAsync(CancellationToken token)
-        {
-            throw new NotImplementedException();
-        }
+        Product productEntity = createProduct.ToEntity();
+        return await _productRepository.CreateAsync(productEntity, cancellationToken);
+    }
 
-        public Task<ReadOnlyProductDTO?> GetByIdAsync(int id, CancellationToken token)
-        {
-            throw new NotImplementedException();
-        }
+    public async Task<IEnumerable<ReadOnlyProductDTO>> GetAllAsync(CancellationToken token = default)
+    {
+        IEnumerable<Product> products = await _productRepository.GetAllAsync(token);
 
-        public Task<bool> UpdateAsync(int id, UpdateProductDTO updateProduct, CancellationToken token)
-        {
-            throw new NotImplementedException();
-        }
+        return products.ToReadOnlyDtoList();
+    }
+
+    public async Task<ReadOnlyProductDTO?> GetByIdAsync(int id, CancellationToken token = default)
+    {
+        if (id <= 0) return null;
+
+        Product? product = await _productRepository.GetByIdAsync(id, token);
+
+        // SÉCURITÉ : Null-propagation operator (?.) pour éviter le crash NullReferenceException
+        return product?.ToReadOnlyDto();
+    }
+
+    public async Task<bool> UpdateAsync(int id, UpdateProductDTO updateProduct, CancellationToken token = default)
+    {
+        if (id <= 0) return false;
+        ArgumentNullException.ThrowIfNull(updateProduct);
+
+        Product productToUpdate = updateProduct.ToEntity(id);
+        return await _productRepository.UpdateAsync(productToUpdate, token);
+    }
+
+    public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
+    {
+        if (id <= 0) return false;
+
+        return await _productRepository.DeleteAsync(id, token);
     }
 }

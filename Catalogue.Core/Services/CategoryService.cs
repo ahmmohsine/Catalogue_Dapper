@@ -13,7 +13,7 @@ namespace Catalogue.Core.Services
 
         public async Task<int> CreateCategoryAsync(CreateCategoryDTO createCategory, CancellationToken cancellationToken)
         {
-            return await _categoryRepository.CreateCategoryAsync(createCategory.ToEntity());
+            return await _categoryRepository.CreateCategoryAsync(createCategory.ToEntity(), cancellationToken);
         }
 
         public async Task<bool> DeleteCategoryAsync(int id, CancellationToken token = default)

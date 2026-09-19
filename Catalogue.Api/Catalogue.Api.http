@@ -12,3 +12,7 @@ GET {{Catalogue.Api_HostAddress}}/api/catalogue
 GET {{Catalogue.Api_HostAddress}}/api/category
 
 ###
+
+GET {{Catalogue.Api_HostAddress}}/api/product
+
+###
