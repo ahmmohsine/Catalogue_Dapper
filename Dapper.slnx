@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Catalogue.Api/Catalogue.Api.csproj" />
+  <Project Path="Catalogue.DTO/Catalogue.Core.csproj" />
+  <Project Path="Catalogue.Repository/Catalogue.Infrastructure.csproj" />
+  <Project Path="Catalogue.Sql/CatalogueDB.sqlproj" Id="9d051522-e8a2-4e73-989d-1b05bd23333e">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
