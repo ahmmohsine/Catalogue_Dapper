@@ -4,27 +4,27 @@ namespace Catalogue.Core.Services
 {
     public class ProductService : IProductService
     {
-        public ReadOnlyProductDTO AddProduct(UpdateProductDto product)
+        public Task<int> CreateAsync(CreateProductDTO createProduct, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteProduct(int id)
+        public Task<bool> DeleteAsync(int id, CancellationToken token = default)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ReadOnlyProductDTO> GetAll()
+        public Task<IEnumerable<ReadOnlyProductDTO>?> GetAllAsync(CancellationToken token)
         {
             throw new NotImplementedException();
         }
 
-        public ReadOnlyProductDTO GetById(int id)
+        public Task<ReadOnlyProductDTO?> GetByIdAsync(int id, CancellationToken token)
         {
             throw new NotImplementedException();
         }
 
-        public ReadOnlyProductDTO UpdateProduct(UpdateProductDto product)
+        public Task<bool> UpdateAsync(int id, UpdateProductDTO updateProduct, CancellationToken token)
         {
             throw new NotImplementedException();
         }

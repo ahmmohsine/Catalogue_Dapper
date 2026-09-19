@@ -1,6 +1,6 @@
 ﻿namespace Catalogue.Core.Dtos.Product
 {
-    public class UpdateProductDTO : BaseProductDTO
+    public class CreateProductDTO : BaseProductDTO
     {
     }
 }

@@ -5,39 +5,27 @@ namespace Catalogue.Infrastructure.Persistence.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        public Product AddProduct(Product product)
+        public Task<int> CreateAsync(Product product, CancellationToken token = default)
         {
             throw new NotImplementedException();
         }
 
-
-        public bool DeleteProduct(int id)
+        public Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Product> GetAll()
+        public Task<IEnumerable<Product>> GetAllAsync(CancellationToken token = default)
         {
             throw new NotImplementedException();
         }
 
-        public Product GetById(int id)
+        public Task<Product> GetByIdAsync(int id, CancellationToken token = default)
         {
             throw new NotImplementedException();
         }
 
-        public Product UpdateProduct(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        IEnumerable<Product> IProductRepository.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        Product IProductRepository.GetById(int id)
+        public Task<bool> UpdateAsync(Product product, CancellationToken token = default)
         {
             throw new NotImplementedException();
         }
