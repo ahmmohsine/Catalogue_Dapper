@@ -1,9 +1,5 @@
 <Solution>
   <Project Path="Catalogue.Api/Catalogue.Api.csproj" />
-  <Project Path="Catalogue.DTO/Catalogue.Core.csproj" />
-  <Project Path="Catalogue.Repository/Catalogue.Infrastructure.csproj" />
-  <Project Path="Catalogue.Sql/CatalogueDB.sqlproj" Id="9d051522-e8a2-4e73-989d-1b05bd23333e">
-    <Build />
-    <Deploy />
-  </Project>
+  <Project Path="Catalogue.Core/Catalogue.Core.csproj" Id="9bee379c-2436-4580-8f11-4e8cc6b42127" />
+  <Project Path="Catalogue.Infrastructure/Catalogue.Infrastructure.csproj" Id="6424d24d-2b4e-4794-b06f-1778cea579eb" />
 </Solution>

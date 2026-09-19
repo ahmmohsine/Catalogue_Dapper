@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Catalogue.DTO\Catalogue.Core.csproj" />
-    <ProjectReference Include="..\Catalogue.Repository\Catalogue.Infrastructure.csproj" />
+    <ProjectReference Include="..\Catalogue.Core\Catalogue.Core.csproj" />
+    <ProjectReference Include="..\Catalogue.Infrastructure\Catalogue.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
